@@ -1,12 +1,11 @@
 from django.db import models
-
 # Create your models here.
 # 评论数据库表
 class Comment(models.Model):
     name = models.CharField(max_length=10)
     Email = models.EmailField(max_length=255,help_text="请填入你的邮箱")
     # url = models.URLField(blank=True)
-    text = models.TextField()
+    text = models.TextField(blank=True,null=True)
     created_time = models.DateTimeField(auto_now_add=True)
 
     article = models.ForeignKey('myblog.Article',on_delete=models.CASCADE)  # 一个评论对应一篇文章，文章和评论是一对多的关系
