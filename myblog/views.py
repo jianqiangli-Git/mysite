@@ -197,9 +197,12 @@ def tag(request,tag_id):
     return render(request,'myblog/list.html',context=context)
 
 def archives(request, year, month):
-    print("month",month)
+    print("year-month",year,'-',month)
     article_list = Article.objects.filter(create_time__year=year).order_by('-create_time')
     num = len(article_list)
+    for article in article_list:
+        print('year: ',article.create_time.year,'month: ',article.create_time.month)
+        print(article.create_time)
     articles = {'article_list': article_list,'num':num,'year':year,'month':month}
     return render(request, 'myblog/list.html', context=articles)
 
