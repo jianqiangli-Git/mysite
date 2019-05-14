@@ -1,0 +1,343 @@
+<!doctype html>
+{% load static %}
+{% load mytags %}
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python | 但行其路听风吟</title>
+<meta name="keywords" content="李健强，个人博客，但行其路听风吟，Django，python">
+<meta name="description" content="李健强的个人博客网站，记录生活点滴美好，用技术做有意思的事">
+	<meta name="author" content="lijianqiang">
+<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/nprogress.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/mycss.css' %}">
+<link rel="apple-touch-icon-precomposed" href="{% static 'myblog/images/icon.png' %}">
+<link rel="shortcut icon" href="{% static 'myblog/images/favicon.ico' %}">
+<script src="{% static 'myblog/js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'myblog/js/nprogress.js' %}"></script>
+<script src="{% static 'myblog/js/jquery.lazyload.min.js' %}"></script>
+<!--[if gte IE 9]>
+<script src="{% static 'myblog/js/jquery-1.11.1.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'myblog/js/html5shiv.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'myblog/js/respond.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'myblog/js/selectivizr-min.js' %}" type="text/javascript"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script>window.location.href='upgrade-browser.html';</script>
+<![endif]-->
+</head>
+
+<body class="user-select">
+<div id='bg' style="background: url('../../static/myblog/images/top_back2.jpg') no-repeat">
+	<iframe id="backgroundMusic" style="display: none" volume='0.2' frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=573384240&auto=1&height=32""></iframe>
+	<!--<span id="transformBack" style="display: none;text-align: right;color:white" class="glyphicon glyphicon-chevron-right" onclick="transformbg()"> </span>-->
+	<!--<div style="float: right;color:white" class="glyphicon glyphicon-chevron-right" onclick="transformbg()"></div>-->
+</div>
+<header class="header">
+<nav class="navbar navbar-default" id="navbar">
+<div class="container">
+  <div class="header-topbar hidden-xs link-border">
+	<ul class="site-nav topmenu">
+		<li><a id="pulldown" class="glyphicon glyphicon-menu-down" style="margin-right: 8px;line-height: 20px" title="拉我关闭背景音乐"></a></li>
+		<script>
+			var times = 0;
+			var bg = 0;
+			document.getElementById("pulldown").addEventListener("click", displayBackgroundMusic);
+			document.getElementById("transformBack").addEventListener("click", displayBackgroundMusic);
+			function displayBackgroundMusic() {
+			    if (times==0) {
+                    //			    class 直接改变元素的类不起作用,改用 className 就好了
+                    this.className = "glyphicon glyphicon-menu-up";
+                    this.title = "拉我隐藏背景音乐";
+                    document.getElementById("backgroundMusic").style.display = 'block';
+//                    document.getElementById("transformBack").style.display = 'inline';
+                    times = 1;
+                }
+                else {
+					this.className = "glyphicon glyphicon-menu-down";
+                    this.title = "拉我关闭背景音乐";
+                    document.getElementById("backgroundMusic").style.display = 'none';
+//                    document.getElementById("transformBack").style.display = 'none';
+			        times = 0;
+				}
+            }
+
+//            function transformbg() {
+//			    if (bg == 0){
+//			        document.getElementById("bg").style.background = url('../../static/myblog/images/top_back1.jpg');
+//			        bg = 1;
+//				}
+//				else {
+//			        document.getElementById("bg").style.background = url('../../static/myblog/images/top_back2.jpg');
+//			        bg = 0;
+//				}
+//            }
+
+		</script>
+	  <li><a href="#" >标签云</a></li>
+		<li><a href="#" rel="nofollow" >读者墙</a></li>
+		<li><a href="#" title="RSS订阅" ><i class="fa fa-rss"></i>RSS订阅</a></li>
+	</ul>
+
+			 勤记录 懂分享</div>
+  <div class="navbar-header">
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false">
+		<span class="sr-only"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</button>
+	<h1 class="logo hvr-bounce-in">
+		<a href="{% url 'myblog:index' %}" title="但行其路听风吟网络博客">
+			<img src="{% static 'myblog/images/title.png' %}" alt="但行其路听风吟网络博客">
+		</a>
+	</h1>
+  </div>
+  <div class="collapse navbar-collapse" id="header-navbar">
+	<form class="navbar-form visible-xs" action="/Search" method="post">
+	  <div class="input-group">
+		<input type="text" name="keyword" class="form-control" placeholder="请输入关键字" maxlength="20" autocomplete="off">
+		<span class="input-group-btn">
+		<button class="btn btn-default btn-search" name="search" type="submit">搜索</button>
+		</span> </div>
+	</form>
+	<ul class="nav navbar-nav navbar-right">
+	  <li class="active"><a data-cont=但行其路听风吟网络博客" title="但行其路听风吟网络博客" href="{% url 'myblog:index' %}">首页</a></li>
+
+	  <li>
+	  <div class="dropdown">
+		  <span class="dropbtn">记录生活</span>
+		  <div class="dropdown-content">
+			  <a href="{% url 'myblog:nav_category' '个人随笔' %}">个人随笔</a>
+			  <a href="{% url 'myblog:nav_category' '个人日记' %}">个人日记</a>
+			  <a href="{% url 'myblog:nav_category' '兴趣展示' %}">兴趣展示</a>
+		  </div>
+	  </div>
+	  </li>
+
+	  <li>
+	  <div class="dropdown">
+		  <span class="dropbtn">技术分类</span>
+		  <div class="dropdown-content">
+			  <a href="{% url 'myblog:nav_category' 'Python' %}">Python</a>
+			  <a href="{% url 'myblog:nav_category' 'Java' %}">Java</a>
+
+			  <a href="{% url 'myblog:nav_category' '网络爬虫' %}">网络爬虫</a>
+			  <a href="{% url 'myblog:nav_category' '机器学习' %}">机器学习</a>
+			  <a href="{% url 'myblog:nav_category' '更多学习' %}">更多学习</a>
+		  </div>
+	  </div>
+	  </li>
+
+	  <li><a data-cont="工具合集" title="工具合集" href="{% url 'myblog:tools' %}" >工具合集</a></li>
+	  <li><a data-cont="关于自己" title="关于自己" href="{% url 'myblog:about' %}" >关于自己</a></li>
+	  <li><a data-cont="赞助作者" title="赞助作者" href="{% url 'myblog:spon' %}" >赞助作者</a></li>
+	  <li><a data-cont="给我留言" title="给我留言" href="{% url 'myblog:leaving' %}" >给我留言</a></li>
+	  <li><a data-cont="技术交流" title="技术交流" href="{% url 'myblog:exchange' %}" >技术交流</a></li>
+	</ul>
+  </div>
+</div>
+</nav>
+</header>
+<section class="container">
+<div class="content-wrap">
+<div class="content">
+  <div id="focusslide" class="carousel slide" data-ride="carousel">
+	<ol class="carousel-indicators">
+	  <li data-target="#focusslide" data-slide-to="0" class="active"></li>
+	  <li data-target="#focusslide" data-slide-to="1"></li>
+	</ol>
+	<div class="carousel-inner" role="listbox">
+	  <div class="item active">
+	  <a href="#" target="_blank" title="但行其路听风吟网络博客源码" >
+	  <img src="{% static 'myblog/images/timg.jpg' %}" alt="但行其路听风吟网络博客源码" class="img-responsive"></a>
+	  </div>
+	  <div class="item">
+	  <a href="#" target="_blank" title="专业网站建设" >
+	  <img src="{% static 'myblog/images/top_back3.jpeg' %}" alt="专业网站建设" class="img-responsive"></a>
+	  </div>
+	</div>
+	<a class="left carousel-control" href="#focusslide" role="button" data-slide="prev" rel="nofollow">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">上一个</span>
+	</a>
+	  <a class="right carousel-control" href="#focusslide" role="button" data-slide="next" rel="nofollow">
+		  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		  <span class="sr-only">下一个</span>
+	  </a>
+  </div>
+  <article class="excerpt-minic excerpt-minic-index">
+		<h2><span class="red">【推荐】</span><a target="_blank" href="#" title="用DTcms做一个独立博客网站（响应式模板）" >用DTcms做一个独立博客网站（响应式模板）</a>
+		</h2>
+		<p class="note">用DTcms做一个独立博客网站（响应式模板），采用DTcms V4.0正式版（MSSQL）。开发环境：SQL2008R2+VS2010。DTcms V4.0正式版功能修复和优化：1、favicon.ico图标后台上传。（解决要换图标时要连FTP或者开服务器的麻烦）</p>
+	</article>
+  <div class="title">
+	<h3>最新发布</h3>
+	<div class="more">                
+			<a href="#" title="点赞最多文章" >点赞最多文章</a>
+			<a href="#" title="一周赞Top10" >一周赞Top10</a>
+			<a href="#" title="打赏我的伙伴" >打赏我的伙伴</a>
+			<a href="#" title="赞我最多的伙伴" >赞我最多的伙伴</a>
+			<a href="#" title="留言最多的伙伴" >留言最多的伙伴</a>
+		</div>
+  </div>
+
+  {% for article in articles %}
+  <article class="excerpt excerpt-{{forloop.counter0|div_5}}" style="">
+	  <a class="focus" href="{{ article.get_absolute_url }}" title="{{article.article_name}}" target="_blank" >
+		  <img class="thumb" data-original="{% static 'myblog/images/201610181739277776.jpg' %}" src="{% static 'myblog/images/201610181739277776.jpg' %}" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: inline;"></a>
+		<header>
+			<a class="cat" href="{% url 'myblog:nav_category' article.category %}" title="{{article.category}}" >{{ article.category }}<i></i></a>
+			<h2>
+				<a href="{{ article.get_absolute_url }}" title="{{article.article_name}}" target="_blank" >{{article.article_name}}</a>
+			</h2>
+		</header>
+		<p class="meta">
+			<time class="time" data-toggle="tooltip" data-original-title="创作时间" data-placement="bottom"><i class="glyphicon glyphicon-time"></i>&thinsp;{{article.create_time|date:"Y-m-d"}}</time>
+			<span class="views" data-toggle="tooltip" data-original-title="阅读数" data-placement="bottom"><i class="glyphicon glyphicon-eye-open"></i>&thinsp;{{article.inspect_num}}</span>
+			<!--跳转到特定页面的锚点-->
+			<a class="comment" href="{% url 'myblog:show' article.id %}#comment" data-toggle="tooltip" data-original-title="评论" data-placement="bottom" target="_blank" >
+				<i class="glyphicon glyphicon-comment"></i>&thinsp;{{article.comment_num}}</a>
+			{% for author in article.author.all %}
+			<span class="author" data-toggle="tooltip" data-original-title="作者" data-placement="bottom"><i class="glyphicon glyphicon-user"></i>&thinsp;{{author.user_name}}&ensp;&ensp;</span>
+			{% endfor %}
+			<span class="like_num" data-toggle="tooltip" data-original-title="喜欢数" data-placement="bottom"><i class="fa fa-heart-o"></i>&thinsp;{{article.like_num}}</span>
+		</p>
+		<p class="note">{{article.content|truncatechars:12}}</p>
+	  	<p class="note">当前网址：{{request.path}}</p>
+	    <p class="note">当前用户：{{request.user}}</p>
+	</article>
+	{% empty %}
+    <h1>&nbsp;&nbsp;暂无文章！</h1>
+	{% endfor %}
+
+  <nav class="pagination" style="display: none;">
+	<ul>
+	  <li class="prev-page"></li>
+	  <li class="active"><span>1</span></li>
+	  <li><a href="?page=2">2</a></li>
+	  <li class="next-page"><a href="?page=2">下一页</a></li>
+	  <li><span>共 2 页</span></li>
+	</ul>
+  </nav>
+
+</div>
+</div>
+<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+<aside class="sidebar">
+<div class="fixed">
+  <div class="widget widget-tabs">
+	<ul class="nav nav-tabs" role="tablist">
+	  <li role="presentation" class="active"><a href="#notice" aria-controls="notice" role="tab" data-toggle="tab" >统计信息</a></li>
+	  <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" >联系站长</a></li>
+	</ul>
+	<div class="tab-content">
+	  <div role="tabpanel" class="tab-pane contact active" id="notice">
+		<h2>日志总数:
+			  {{articles|length}}
+		  </h2>
+		  <h2>网站运行:
+		  <span id="sitetime">88天 </span></h2>
+	  </div>
+		<div role="tabpanel" class="tab-pane contact" id="contact">
+		  <h2>QQ:
+			  <a href="" target="_blank" rel="nofollow" data-toggle="tooltip" data-placement="bottom" title=""  data-original-title="QQ：861865739">861865739</a>
+		  </h2>
+		  <h2>Email:
+		  <a href="#" target="_blank" data-toggle="tooltip" rel="nofollow" data-placement="bottom" title=""  data-original-title="861865739@qq.com">861865739@qq.com</a></h2>
+	  </div>
+	</div>
+  </div>
+  <div class="widget widget_search">
+	<form class="navbar-form" action="/Search" method="post">
+	  <div class="input-group">
+		<input type="text" name="keyword" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off">
+		<span class="input-group-btn">
+		<button class="btn btn-default btn-search" name="search" type="submit">搜索</button>
+		</span> </div>
+	</form>
+  </div>
+</div>
+<div class="widget widget_hot">
+	<h3>评论最热文章&ensp;<span class="label label-info" style="color: red;text-shadow: coral"><span class="glyphicon glyphicon-fire">&thinsp;hot~</span></span></h3>
+	  {% most_comment_articles as hot_articles%}
+		{% for hot_article in hot_articles %}
+	  <ul>
+		<li>
+			<a title="" href="{{hot_article.get_absolute_url}}" >
+				<span class="thumbnail">
+					<img class="thumb" data-original="{% static 'myblog/images/201610181739277776.jpg' %}" src="{% static 'myblog/images/201610181739277776.jpg' %}" alt=""  style="display: block;">
+				</span>
+					<!--&nbsp;	&#160; 	不断行的空白（1个字符宽度）-->
+					<!--&ensp; 	&#8194;	半个空白（1个字符宽度）-->
+					<!--&emsp;	&#8195;	一个空白（2个字符宽度）-->
+					<!--&thinsp; 	&#8201;	窄空白（小于1个字符宽度）-->
+				<span class="text">{{hot_article.article_name}}</span>
+				<span class="muted"><i class="glyphicon glyphicon-time"></i>&thinsp;{{hot_article.create_time|date:"Y-m-d"}}</span>
+				<span class="muted"><i class="glyphicon glyphicon-eye-open"></i>&thinsp;{{hot_article.inspect_num}}</span>
+				<span class="muted" title="评论"><i class="glyphicon glyphicon-comment"></i>&thinsp;{{hot_article.comment_num}}</span>
+			</a>
+		</li>
+	  </ul>
+	{% endfor %}
+ </div>
+ <div class="widget widget_hot">
+	 <h3>按月归档</h3>
+	 <!--这里通过用自定义模板标签直接从数据库中的取得对象数据而不是通过从视图函数获得后在传递到模板中渲染出来，更加方便快捷，也避免了每个归类(集每种数据对象的集合)都要编写一个视图函数的麻烦-->
+	 <!--必须加上这一句才能用到自定义模板标签返回的值-->
+	 {% date_archive as archive %}
+	 {% for date in archive %}
+	 <li>
+		 <!--python 的date对象有 year 和 month 属性-->
+      	<a href="{% url 'myblog:archive' date.year date.month %}">{{ date.year }}年{{ date.month }}月</span></a>
+	 </li>
+
+	 {% endfor %}
+
+ </div>
+ <div class="widget widget_hot">
+	 <h3>按类归档</h3>
+	 <!--必须加上这一句才能用到自定义模板标签返回的值-->
+	 {% categorys as category_list %}
+	 {% for category in category_list %}
+	 <li>
+      	<a href="{% url 'myblog:category' category.id %}">{{ category.category_name }} <span class="article-count">({{category.num_articles}})</span></a>
+	 </li>
+	 {% endfor %}
+ </div>
+ <div class="widget widget_sentence">    
+	<a href="#" target="_blank" rel="nofollow" title="专业网站建设" >
+	<img style="width: 100%" src="{% static 'myblog/images//201610241224221511.jpg' %}" alt="专业网站建设" ></a>
+ </div>
+ <div class="widget widget_sentence">    
+	<a href="#" target="_blank" rel="nofollow" title="MZ-NetBlog主题" >
+	<img style="width: 100%" src="{% static 'myblog/images/ad.jpg' %}" alt="MZ-NetBlog主题" ></a>
+ </div>
+<div class="widget widget_sentence">
+  <h3>友情链接</h3>
+  <div class="widget-sentence-link">
+	<a href="https://gitee.com/progit/" title="Git Pro (中文版)" target="_blank" >Git Pro (中文版)</a>&nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+</aside>
+</section>
+<footer class="footer">
+<div class="container">
+<p>Copyright &copy;2019.<a href="{% url 'myblog:index' %}" target="_blank" title="但行其路听风吟">但行其路听风吟</a> All rights reserved.
+ <a href="{% url 'myblog:index' %}" target="_blank" title="模板之家">模板之家</a> - Collect from
+ <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+</p>
+</div>
+<div id="gotop"><a class="gotop"></a></div>
+</footer>
+<script src="{% static 'myblog/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'myblog/js/jquery.ias.js' %}"></script>
+<script src="{% static 'myblog/js/scripts.js' %}"></script>
+</body>
+</html>
+
