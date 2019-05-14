@@ -10,6 +10,6 @@ admin.site.register(Category)
 admin.site.register(User)
 admin.site.register(Likes)
 
-admin.site.regiter(Comment)
+admin.site.register(Comment)
 admin.site.register(Leaving)
 admin.site.register(Expectation)
