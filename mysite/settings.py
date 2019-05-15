@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#l7jm_#d^taj!6%zhn7aclvih2f&=m14t%o!^d#60khbvm2rn+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = False 会导致静态文件 404
 DEBUG = False
 
 # ALLOWED_HOSTS 是允许访问的域名列表，127.0.0.1 和 localhost 是本地访问的域名，.lijianqianga.com 是访问服务器的域名。
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'comment',
     'django.contrib.admin',
     'django.contrib.auth',
+    # auth 模块的用户权限处理部分依赖的应用
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -46,9 +48,11 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # SessionMiddleware 用户处理用户会话
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    # AuthenticationMiddleware 绑定一个 User 对象到请求中
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -59,7 +63,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # 自定义 templates 查找路径，其中 BASE_DIR 是django创建工程的那个工程文件的路径
         'DIRS': [],
+        # APP_DIRS 应该就是允许查找注册的 APP 下的 TEMPLATES，对于 myblog 应用来说，就可以查找 myblog 下的 remplates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

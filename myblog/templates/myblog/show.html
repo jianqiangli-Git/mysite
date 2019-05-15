@@ -230,11 +230,9 @@
 	  <h3>相关推荐</h3>
 	</div>
 	<ul>
-	  <li><a href="#" title="" >做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-	  <li><a href="#" title="" >做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-	  <li><a href="#" title="" >做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-	  <li><a href="#" title="" >做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
-	  <li><a href="#" title="" >做一个独立博客网站（响应式模板）-MZ-NetBlog主题</a></li>
+		{% for recommend_article in recommend_list %}
+	  <li><a href="{% url 'myblog:show' recommend_article.id %}" title="" >{{recommend_article.article_name}}</a></li>
+		{% endfor %}
 	</ul>
   </div>
   <div class="title" id="comment">

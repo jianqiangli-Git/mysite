@@ -5,6 +5,8 @@ from .models import Article,Category,Tag,User,Likes
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from django.http import JsonResponse
+from copy import deepcopy
+import random
 
 import markdown
 
@@ -27,6 +29,24 @@ def index(request):
 
 def show(request,article_id):
     article = Article.objects.get(pk=article_id)
+    # 一对多的反向查询才用 object.***_set.all(),多对多用 属性.all() 方法
+    tags = article.tag.all()
+    print('文章下的tags',tags)
+    recommend_list = []
+    i = 0
+    for tag in tags:
+        articles = deepcopy(list(Article.objects.filter(tag=tag)))
+        articles.remove(article)
+        if len(articles) <= 1:
+            article_tag = articles
+        elif len(articles)>=2:
+            article_tag = random.sample(articles,2)
+        recommend_list = recommend_list+article_tag
+        print(tag,'下的文章：',recommend_list)
+        i += 1
+        if i>=3:
+            break
+    recommend_list = set(recommend_list)
     theme = article.category
     author_list = User.objects.filter(article=article)
     # 阅读量 +1
@@ -46,6 +66,7 @@ def show(request,article_id):
                'author_list':author_list,
                'article_num':article_num,
                'form': form,
+               'recommend_list':recommend_list,
                'comment_list': comment_list,
                'theme':theme
                }

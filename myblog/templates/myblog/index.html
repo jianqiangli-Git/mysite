@@ -11,10 +11,10 @@
 <meta name="keywords" content="李健强，个人博客，但行其路听风吟，Django，python">
 <meta name="description" content="李健强的个人博客网站，记录生活点滴美好，用技术做有意思的事">
 <meta name="author" content="lijianqiang">
-<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+ <!--最新版本的 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+ <!--最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'myblog/css/bootstrap.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'myblog/css/nprogress.css' %}">
@@ -212,7 +212,7 @@
 			{% endfor %}
 			<span class="like_num" data-toggle="tooltip" data-original-title="喜欢数" data-placement="bottom"><i class="fa fa-heart-o"></i>&thinsp;{{article.like_num}}</span>
 		</p>
-		<p class="note">{{article.content|truncatechars:12}}</p>
+		<p class="note">摘要：{{article.content|truncatechars:12}}</p>
 	  	<p class="note">当前网址：{{request.path}}</p>
 	    <p class="note">当前用户：{{request.user}}</p>
 	</article>
