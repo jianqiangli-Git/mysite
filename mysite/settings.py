@@ -24,7 +24,7 @@ SECRET_KEY = '#l7jm_#d^taj!6%zhn7aclvih2f&=m14t%o!^d#60khbvm2rn+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False 会导致静态文件 404
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS 是允许访问的域名列表，127.0.0.1 和 localhost 是本地访问的域名，.lijianqianga.com 是访问服务器的域名。
 # 域名前加一个点表示允许访问该域名下的子域名，
