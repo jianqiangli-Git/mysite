@@ -78,10 +78,11 @@
 }
 
 .share_block {
+    text-align: center;
     background: #3399cc;
     float: right;
-    line-height:25px;
-    padding:8px 40px
+    line-height:38px;
+    padding:0px 30px
 }
 
 .share_block_about {

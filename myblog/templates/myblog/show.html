@@ -130,7 +130,7 @@
 	</div>
   </header>
   <article class="article-content">
-	<p><img data-original="{% static 'images/201610181557196870.jpg' %}" src="{% static 'images/201610181557196870.jpg' %}" alt="" /></p>
+	<p><img data-original="{% static 'myblog/images/201610181557196870.jpg' %}" src="{% static 'myblog/images/201610181557196870.jpg' %}" alt="" /></p>
     <!--Django 出于安全方面的考虑，任何的 HTML 代码在 Django 的模板中都会被转义（即显示原始的 HTML 代码，而不是经浏览器渲染后的格式）。为了解除转义，只需在模板标签使用 safe 过滤器即可，告诉 Django，这段文本是安全的-->
 	<p>{{ article.content|safe }}</p>
 	<pre class="prettyprint lang-cs">代码示例：

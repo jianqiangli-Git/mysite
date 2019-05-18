@@ -83,15 +83,18 @@
                     </li>
 
                     <li>
-                        <div class="dropdown">
-                            <span class="dropbtn">技术分类</span>
-                            <div class="dropdown-content">
-                                <a href="{% url 'myblog:nav_category' '网络爬虫' %}">网络爬虫</a>
-                                <a href="{% url 'myblog:nav_category' '机器学习' %}">机器学习</a>
-                                <a href="{% url 'myblog:nav_category' '更多学习' %}">更多学习</a>
-                            </div>
-                        </div>
-                    </li>
+	  <div class="dropdown">
+		  <span class="dropbtn">技术分类</span>
+		  <div class="dropdown-content">
+			  <a href="{% url 'myblog:nav_category' 'Python' %}">Python</a>
+			  <a href="{% url 'myblog:nav_category' 'Java' %}">Java</a>
+
+			  <a href="{% url 'myblog:nav_category' '网络爬虫' %}">网络爬虫</a>
+			  <a href="{% url 'myblog:nav_category' '机器学习' %}">机器学习</a>
+			  <a href="{% url 'myblog:nav_category' '更多学习' %}">更多学习</a>
+		  </div>
+	  </div>
+	  </li>
 
                     <li><a data-cont="工具合集" title="工具合集" href="{% url 'myblog:tools' %}">工具合集</a></li>
                     <li class="active"><a data-cont="关于自己" title="关于自己" href="{% url 'myblog:about' %}">关于自己</a></li>

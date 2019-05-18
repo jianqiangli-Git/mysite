@@ -34,6 +34,7 @@
 <!--[if lt IE 9]>
 <script>window.location.href='upgrade-browser.html';</script>
 <![endif]-->
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "32" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=0.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
 </head>
 
 <body class="user-select single">
@@ -76,10 +77,14 @@
 	  </div>
 	  </li>
 
+
+
 	  <li>
 	  <div class="dropdown">
 		  <span class="dropbtn">技术分类</span>
 		  <div class="dropdown-content">
+			  <a href="{% url 'myblog:nav_category' 'Python' %}">Python</a>
+			  <a href="{% url 'myblog:nav_category' 'Java' %}">Java</a>
 			  <a href="{% url 'myblog:nav_category' '网络爬虫' %}">网络爬虫</a>
 			  <a href="{% url 'myblog:nav_category' '机器学习' %}">机器学习</a>
 			  <a href="{% url 'myblog:nav_category' '更多学习' %}">更多学习</a>
@@ -92,8 +97,11 @@
 	  <li><a data-cont="赞助作者" title="赞助作者" href="{% url 'myblog:spon' %}" >赞助作者</a></li>
 	  <li class="active"><a data-cont="给我留言" title="给我留言" href="{% url 'myblog:leaving' %}" >给我留言</a></li>
 	  <li><a data-cont="技术交流" title="技术交流" href="{% url 'myblog:exchange' %}" >技术交流</a></li>
+
 	</ul>
+
   </div>
+
 </div>
 </nav>
 </header>
@@ -103,32 +111,62 @@
   <header class="article-header">
 	<h1 class="article-title"><a href="#" title="我的留言板" >我的留言</a></h1>
 	<div class="article-meta">
-        <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="我的签名"><i class="glyphicon glyphicon-pencil"></i> <a href="#" title="我的签名" >人生，要用来做有意思的事</a></span>
+        <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="我的签名"><i class="glyphicon glyphicon-pencil"></i>
+			<a href="#" title="我的签名" >人生，要用来做有意思的事</a></span>
     </div>
   </header>
-  <article class="article-content">
-	<p><img data-original="{% static 'images/201610181557196870.jpg' %}" src="{% static 'images/201610181557196870.jpg' %}" alt="" /></p>
-    <!--Django 出于安全方面的考虑，任何的 HTML 代码在 Django 的模板中都会被转义（即显示原始的 HTML 代码，而不是经浏览器渲染后的格式）。为了解除转义，只需在模板标签使用 safe 过滤器即可，告诉 Django，这段文本是安全的-->
-	<!--<p>{{ article.content|safe }}</p>-->
 
-	<div class="bdsharebuttonbox">
-		<a href="#" class="bds_more" data-cmd="more"></a>
-		<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-		<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-		<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-		<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-		<a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-		<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	</div>
-		  <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "32" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=0.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-  </article>
+  <!--<article class="article-content" >-->
+    <!--&lt;!&ndash;Django 出于安全方面的考虑，任何的 HTML 代码在 Django 的模板中都会被转义（即显示原始的 HTML 代码，而不是经浏览器渲染后的格式）。为了解除转义，只需在模板标签使用 safe 过滤器即可，告诉 Django，这段文本是安全的&ndash;&gt;-->
+	<!--&lt;!&ndash;<p>{{ article.content|safe }}</p>&ndash;&gt;-->
+	<!--<div class="bdsharebuttonbox">-->
+		<!--<a href="#" class="bds_more" data-cmd="more"></a>-->
+		<!--<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>-->
+		<!--<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>-->
+		<!--<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>-->
+		<!--<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>-->
+		<!--<a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>-->
+		<!--<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>-->
+	<!--</div>-->
+		  <!--<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "32" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=0.js?cdnversion=' + ~(-new Date() / 36e5)];</script>-->
+  <!--</article>-->
+
 
     <div class="title" id="comment">
-	<h3 style="padding-top: 16px">留言</h3>
+	<h3 style="padding-top: 16px">给我留言</h3>
+
 		<div class = "share_block">
-			<span class="glyphicon glyphicon-share">&ensp;分享</span>
+			<div id='fen' data-toggle="popover" data-placement="top" data-trigger="hover" data-html="true"><span class="glyphicon glyphicon-send">&ensp;分享</span></div>
 		</div>
+
+
+		<script>
+			$(function() {
+   
+    			var data = "<div class='bdsharebuttonbox bdshare-button-style1-32' data-bd-bind='1558151891645'>" +
+					"<a href='#' class='bds_more' data-cmd='more'></a>"+
+					"<a href='#' class='bds_qzone' data-cmd='qzone' title='分享到QQ空间'>好的</a>"+
+					'<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">我是</a>'+
+					'<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>'+
+					'<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>'+
+					'<a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>'+
+					'<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a></div>';
+				$('#fen').attr("data-content",data);
+    
+			    $("#fen").popover({ 
+					width:1200,					 
+        			        html : true,        
+        			delay:{show:200, hide:1000},  
+					container: 'body',					        
+    				    				});  
+
+				});  
+		</script>
+
+
   </div>
+
+
     <div id="respond">
 		<!--<form id="comment-form" name="comment-form" action="{% url 'comment:leaving_comment' %}" method="POST">-->
 			<!--{% csrf_token %}-->
