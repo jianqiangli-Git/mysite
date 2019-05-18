@@ -130,27 +130,11 @@
 	</div>
   </header>
   <article class="article-content">
-	<p><img data-original="{% static 'myblog/images/201610181557196870.jpg' %}" src="{% static 'myblog/images/201610181557196870.jpg' %}" alt="" /></p>
+	<p><img data-original="{% static 'myblog/images/riji.jpg' %}" src="{% static 'myblog/images/riji.jpg' %}" alt="" /></p>
     <!--Django 出于安全方面的考虑，任何的 HTML 代码在 Django 的模板中都会被转义（即显示原始的 HTML 代码，而不是经浏览器渲染后的格式）。为了解除转义，只需在模板标签使用 safe 过滤器即可，告诉 Django，这段文本是安全的-->
 	<p>{{ article.content|safe }}</p>
-	<pre class="prettyprint lang-cs">代码示例：
-	public static double JieCheng(int number)
-	{
-		if (number == 0)
-		{
-			return 0;
-		}
 
-		//初始值必须设置为1
-		double result = 1; 
-
-		for (int i = number; i &gt;= 1; i--)
-		{
-			result = result*i;
-		}
-		return result;
-	}</pre>
-
+	<br><br>
 	  <div class="likes"><a class="article_like" href="#" data-id="{{ article.id }}" data-action="article_like">
 		  <i class="fa fa-heart-o">&thinsp;喜欢这篇文章(<span class="total">{{article.like_num}}</span>)</i></a></div>
 	<div class="bdsharebuttonbox">
