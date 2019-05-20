@@ -149,4 +149,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/' # media即为图片上传的根路径
 # 添加图片的查找路径，也就是在 project 目录下的 media 目录
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media').replace("\\","/")
