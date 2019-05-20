@@ -5,6 +5,7 @@ from .models import Article,Tag,Category,User,Likes
 from comment.models import Leaving,Expectation,Comment
 
 admin.site.register(Article)
+# admin.site.register(ArticleFace)
 admin.site.register(Tag)
 admin.site.register(Category)
 admin.site.register(User)

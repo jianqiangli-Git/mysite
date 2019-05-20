@@ -109,11 +109,11 @@ jQuery.ias({
 	pagination: '.pagination',
 	next: '.next-page a',
 	trigger: '查看更多',
-	loader: '<div class="pagination-loading"><img src="images/loading.gif" /></div>',
+	loader: '<div class="pagination-loading"><img src="/static/myblog/images/loading.gif" /></div>',
 	triggerPageThreshold: 5,
 	onRenderComplete: function() {
 		$('.excerpt .thumb').lazyload({
-			placeholder: '../images/occupying.png',
+			placeholder: '/static/myblog/images/occupying.png',
 			threshold: 400
 		});
 		$('.excerpt img').attr('draggable', 'false');

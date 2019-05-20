@@ -73,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 如果在模板中使用{{MEDIA_URL}} 渲染出 MEDIA_URL 的值，需要在 context_processors 选项中添加
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -136,6 +138,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+# STATICFILES_DIRS告诉django,首先到STATICFILES_DIRS里面寻找静态文件,其次再到各个app的static文件夹里面找(
+# STATICFILES_DIRS = (
+# os.path.join(BASE_DIR, 'common_static'),
+# )
+
 STATIC_URL = '/static/'
-# STATIC_ROOT 指明了静态文件的收集目录，即项目根目录（BASE_DIR）下的 static 文件夹
+# STATIC_ROOT 指明了静态文件的收集目录，即项目根目录（BASE_DIR）下的 static 文件夹，要写成绝对地址
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/' # media即为图片上传的根路径
+# 添加图片的查找路径，也就是在 project 目录下的 media 目录
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')

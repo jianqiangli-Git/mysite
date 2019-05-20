@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('myblog/',include('myblog.urls',namespace='myblog')),
     path('comment/',include('comment.urls',namespace='comment')),
     path('admin/', admin.site.urls),
 ]
+
+# 将 MEDIA_URL 映射到 MEDIA_ROOT 即将 /media/ 映射到 base_dir + media 类似于 STATIC_URL 可以找到 staic 文件的
+# 绝对路径一样(优先查找 STATIC_DIR然后查到 app下的 static)
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+

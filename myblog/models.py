@@ -45,11 +45,18 @@ class Likes(models.Model):
         verbose_name = '文章点赞'
         verbose_name_plural = '文章点赞'
 
+
+# class ArticleFace(models.Model):
+#     img = models.ImageField(upload_to='upload',blank=True,null=True) # 存储路径是相对于MEIDA_ROOT而来的
+
+
 class Article(models.Model):
     # time ："hh: mm:ss" 格式表示的时间值，格式显示TIME值，但允许使用字符串或数字为TIME列分配值。
     # date ："yyyy - mm - dd" 格式表示的日期值 ，以’HH: MM:SS’格式显示TIME值，但允许使用字符串或数字为TIME列分配值
     # datetime："yyyy - mm - dd hh:mm:ss" 格式，日期和时间的组合。格式显示DATETIME值，但允许使用字符串或数字为DATETIME列分配值。
     choice = (('d', 'draft'), ('p', 'published'))
+    # face = models.ForeignKey(ArticleFace,blank=True,null=True,on_delete=models.DO_NOTHING)
+    face = models.ImageField(upload_to='upload',blank=True,null=True)   # 文章封面，upload_to指定图片上传的路径，如果不存在则自动创建
     article_name = models.CharField(max_length=50)
     content = models.TextField()
     author = models.ManyToManyField(User)

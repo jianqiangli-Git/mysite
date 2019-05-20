@@ -195,7 +195,9 @@
   {% for article in articles %}
   <article class="excerpt excerpt-{{forloop.counter0|div_5}}" style="">
 	  <a class="focus" href="{{ article.get_absolute_url }}" title="{{article.article_name}}" target="_blank" >
-		  <img class="thumb" data-original="{% static 'myblog/images/201610181739277776.jpg' %}" src="{% static 'myblog/images/201610181739277776.jpg' %}" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: inline;"></a>
+		  <!--img:alt-规定图像的替代文本,{{ MEDIA_URL }}会被渲染为 settings.py 中的 MEDIA_URL 值(需要在settings.py中的TEMPLATES中设置media的处理)-->
+		  <!--这个 MEDIA_URL(/media/)由于在urls中用static()将MEDIA_URL映射到STATIC_ROOT，因此可以找到media目录的位置，ImageField是图片的存储位置(/upload/image.jpg)-->
+		  <img width="220px" height="150px" class="thumb" data-original="{{ MEDIA_URL }}{{article.face}}" src="{{ MEDIA_URL }}{{article.face}}" alt="暂无封面图片" style="display: inline;"></a>
 		<header>
 			<a class="cat" href="{% url 'myblog:nav_category' article.category %}" title="{{article.category}}" >{{ article.category }}<i></i></a>
 			<h2>
@@ -214,8 +216,8 @@
 			<span class="like_num" data-toggle="tooltip" data-original-title="喜欢数" data-placement="bottom"><i class="fa fa-heart-o"></i>&thinsp;{{article.like_num}}</span>
 		</p>
 		<p class="note">摘要：{{article.content|truncatechars:12}}</p>
-	  	<p class="note">当前网址：{{request.path}}</p>
-	    <p class="note">当前用户：{{request.user}}</p>
+	  	<!--<p class="note">当前网址：{{request.path}}</p>-->
+	    <!--<p class="note">当前用户：{{request.user}}</p>-->
 	</article>
 	{% empty %}
     <h1>&nbsp;&nbsp;暂无文章！</h1>
@@ -276,7 +278,7 @@
 		<li>
 			<a title="" href="{{hot_article.get_absolute_url}}" >
 				<span class="thumbnail">
-					<img class="thumb" data-original="{% static 'myblog/images/201610181739277776.jpg' %}" src="{% static 'myblog/images/201610181739277776.jpg' %}" alt=""  style="display: block;">
+					<img width="122px" height="86px" class="thumb" data-original="{{ MEDIA_URL }}{{hot_article.face}}" src="{{ MEDIA_URL }}{{hot_article.face}}" alt=""  style="display: block;">
 				</span>
 					<!--&nbsp;	&#160; 	不断行的空白（1个字符宽度）-->
 					<!--&ensp; 	&#8194;	半个空白（1个字符宽度）-->
@@ -326,7 +328,9 @@
 <div class="widget widget_sentence">
   <h3>友情链接</h3>
   <div class="widget-sentence-link">
-	<a href="https://gitee.com/progit/" title="Git Pro (中文版)" target="_blank" >Git Pro (中文版)</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://gitee.com/progit/" title="Git Pro (中文版)" target="_blank" >Git Pro (中文版)</a>
+	  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <a href="http://www.markdown.cn/" title="Markdown 教程" target="_blank">Markdown 教程</a>
   </div>
 </div>
 </aside>

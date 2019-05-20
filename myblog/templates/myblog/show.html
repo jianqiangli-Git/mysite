@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'myblog/css/mycss.css' %}">
 <link rel="apple-touch-icon-precomposed" href="{% static 'myblog/images/icon.png' %}">
 <link rel="shortcut icon" href="{% static 'myblog/images/favicon.ico' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'myblog/css/highlights/github.css' %}">
 <script src="{% static 'myblog/js/jquery-2.1.4.min.js' %}"></script>
 <script src="{% static 'myblog/js/nprogress.js' %}"></script>
 <script src="{% static 'myblog/js/jquery.lazyload.min.js' %}"></script>
@@ -334,8 +335,8 @@
 	  {% most_comment_articles as hot_articles%}
 		{% for hot_article in hot_articles %}
 	  <ul>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="{{hot_article.get_absolute_url}}" ><span class="thumbnail">
-				<img class="thumb" data-original="{% static 'myblog/images/201610181739277776.jpg' %}" src="{% static 'myblog/images/201610181739277776.jpg' %}" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
+			<li><a title="{{hot_article.article_name}}" href="{{hot_article.get_absolute_url}}" ><span class="thumbnail">
+				<img class="thumb" data-original="{{ MEDIA_URL }}{{hot_article.face}}" src="{{ MEDIA_URL }}{{hot_article.face}}" alt="遭了！图片跑路了 o(╥﹏╥)o！"  style="display: block;">
 			</span><span class="text">{{hot_article.article_name}}</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
 				&thinsp;{{hot_article.create_time|date:"Y-m-d"}}
 			</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>&thinsp;{{hot_article.inspect_num}}</span>

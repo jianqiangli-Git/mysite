@@ -111,10 +111,11 @@
 
 	{% for article in article_list %}
   <article class="excerpt excerpt-{{forloop.counter0|div_5}}" style="">
-	  <a class="focus" href="{{ article.get_absolute_url }}" title="用DTcms做一个独立博客网站（）" target="_blank" >
-		  <img class="thumb" data-original="{% static 'myblog/images/201610181739277776.jpg' %}" src="{% static 'myblog/images/201610181739277776.jpg' %}" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: inline;"></a>
-		<header><a class="cat" href="{% url 'myblog:nav_category' article.category %}" title="MZ-NetBlog主题" >{{article.category}}<i></i></a>
-			<h2><a href="{{ article.get_absolute_url }}" title="用DTcms做一个独立博客网站（wogaile）" target="_blank" >{{article.article_name}}</a>
+	  <a class="focus" href="{{ article.get_absolute_url }}" title="点开我看看 (*❦ω❦)" target="_blank" >
+		  <img class="thumb" data-original="{{ MEDIA_URL }}{{hot_article.face}}" src="{{ MEDIA_URL }}{{article.face}}" alt="遭了！图片跑路了 o(╥﹏╥)o！"  style="display: inline;">
+	  </a>
+		<header><a class="cat" href="{% url 'myblog:nav_category' article.category %}" title="{{article.category}}主题" >{{article.category}}<i></i></a>
+			<h2><a href="{{ article.get_absolute_url }}" title="{{article.article_name}}" target="_blank" >{{article.article_name}}</a>
 			</h2>
 		</header>
 		<p class="meta">
@@ -161,10 +162,12 @@
 		<ul class="plinks ptags">
 			{% get_tags as tags %}
 			{% for tag in tags %}
-			<li><a href="{% url 'myblog:tag' tag.id %}" title="移动统计" draggable="false">{{ tag.tag_name }} <span class="badge">{{ tag.num_articles }}</span></a></li>
-			<li><a href="#list/252/" title="VS2010" draggable="false">VS2010 <span class="badge">1</span></a></li>
-			<li><a href="#list/133/" title="html标签" draggable="false">html标签 <span class="badge">1</span></a></li>
-			<li><a href="#list/22/" title="百度统计" draggable="false">百度统计 <span class="badge">2</span></a></li>
+			<li>
+				<a href="{% url 'myblog:tag' tag.id %}" title="{{ tag.tag_name }}" draggable="false">{{ tag.tag_name }}
+				<span class="badge">{{ tag.num_articles }}</span>
+				</a>
+			</li>
+
 			{% endfor %}
 		</ul>
 	</div>
@@ -175,8 +178,8 @@
 	  {% most_comment_articles as hot_articles%}
 		{% for hot_article in hot_articles %}
 	  <ul>
-			<li><a title="用DTcms做一个独立博客网站（响应式模板）" href="{{hot_article.get_absolute_url}}" ><span class="thumbnail">
-				<img class="thumb" data-original="{% static 'myblog/images/201610181739277776.jpg' %}" src="{% static 'myblog/images/201610181739277776.jpg' %}" alt="用DTcms做一个独立博客网站（响应式模板）"  style="display: block;">
+			<li><a title="{{hot_article.article_name}}" href="{{hot_article.get_absolute_url}}" ><span class="thumbnail">
+				<img class="thumb" data-original="{{ MEDIA_URL }}{{article.face}}" src="{{ MEDIA_URL }}{{hot_article.face}}" alt="遭了！图片跑路了 o(╥﹏╥)o！"  style="display: block;">
 			</span><span class="text">{{hot_article.article_name}}</span><span class="muted"><i class="glyphicon glyphicon-time"></i>
 				&thinsp;{{hot_article.create_time|date:"Y-m-d"}}
 			</span><span class="muted"><i class="glyphicon glyphicon-eye-open"></i>&thinsp;{{hot_article.inspect_num}}</span>
