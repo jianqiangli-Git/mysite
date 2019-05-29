@@ -215,7 +215,7 @@
 			{% endfor %}
 			<span class="like_num" data-toggle="tooltip" data-original-title="喜欢数" data-placement="bottom"><i class="fa fa-heart-o"></i>&thinsp;{{article.like_num}}</span>
 		</p>
-		<p class="note">摘要：{{article.content|truncatechars:12}}</p>
+		<p class="note">摘要：{{article.content|striptags|truncatechars:12}}</p>
 	  	<!--<p class="note">当前网址：{{request.path}}</p>-->
 	    <!--<p class="note">当前用户：{{request.user}}</p>-->
 	</article>

@@ -24,7 +24,7 @@ SECRET_KEY = '#l7jm_#d^taj!6%zhn7aclvih2f&=m14t%o!^d#60khbvm2rn+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False 会导致静态文件 404
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS 是允许访问的域名列表，127.0.0.1 和 localhost 是本地访问的域名，.lijianqianga.com 是访问服务器的域名。
 # 域名前加一个点表示允许访问该域名下的子域名，
@@ -37,6 +37,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '47.106.117.116','.lijianqianga.com'
 INSTALLED_APPS = [
     'myblog',
     'comment',
+    'ckeditor',
+    'ckeditor_uploader',
     'django.contrib.admin',
     'django.contrib.auth',
     # auth 模块的用户权限处理部分依赖的应用
@@ -124,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'UTC'
 
@@ -150,3 +152,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/' # media即为图片上传的根路径
 # 添加图片的查找路径，也就是在 project 目录下的 media 目录
 MEDIA_ROOT = os.path.join(BASE_DIR,'media').replace("\\","/")
+
+# 注意：如果写成 /ck_upload/ 会出现 url 错误
+CKEDITOR_UPLOAD_PATH = 'ck_upload/'

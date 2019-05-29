@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 # 文章分类数据表(一篇文章只有一个类别)
 class Category(models.Model):
@@ -58,7 +59,8 @@ class Article(models.Model):
     # face = models.ForeignKey(ArticleFace,blank=True,null=True,on_delete=models.DO_NOTHING)
     face = models.ImageField(upload_to='upload',blank=True,null=True)   # 文章封面，upload_to指定图片上传的路径，如果不存在则自动创建
     article_name = models.CharField(max_length=50)
-    content = models.TextField()
+    # content = models.TextField()
+    content = RichTextUploadingField()
     author = models.ManyToManyField(User)
     category = models.ForeignKey(Category,blank=True,null=True,on_delete=models.CASCADE) #删除类别，文章也级联删除
     tag = models.ManyToManyField(Tag,blank=True,null=True) #文章和标签是多对多的关系
