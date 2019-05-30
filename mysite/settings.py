@@ -57,13 +57,14 @@ CKEDITOR_CONFIGS = {
         'tabSpaces': 4,
         'toolbar': 'Custom',
         # 添加按钮在这里
-        'toolbar_Custom': [
+        'toolbar_Custom':
+        [
             ['Font','FontSize'],
             ['Styles','Format','Bold', 'Italic', 'Underline','Strike','RemoveFormat','TextColor','BGColor'],
             ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
             ['NumberedList', 'BulletedList'],
             ['Blockquote', 'CodeSnippet'],
-            ['Smiley','SpecialChar','Image', 'Flash','Link', 'Unlink',],
+            ['Smiley','SpecialChar','Image', 'Flash','Link', 'Unlink'],
             ['Redo','Undo','Table','HorizontalRule'],
             # ['Indent','Outdent'], 增加缩进量/减少缩进量
             ['Maximize'],
@@ -73,7 +74,7 @@ CKEDITOR_CONFIGS = {
         # 插件
         # 'uploadimage'，这个插件的作用是允许用户直接在编辑器里粘贴（ctrl + v）图片
         # 添加的插件如果在在工具条(toolbar)还有按钮则在toolbar对应的value里添加名字（首字母大写）[例如codesnippet]
-        'extraPlugins': ','.join(['codesnippet','uploadimage','prism','widget','lineutils',]),
+        'extraPlugins': ','.join(['codesnippet','uploadimage','widget','lineutils',]),
     }
 }
 
