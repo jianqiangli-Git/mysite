@@ -48,37 +48,37 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-CKEDITOR_CONFIGS = {
-    # settings name 用于实例化编辑器的时候引用,配置名是default时，django-ckeditor默认使用这个配置
-    'default': {
-        # 使用简体中文
-        'language':'zh-cn',
-        # 编辑器的宽高请根据页面自行设置
-        'width':'1500px',
-        'height':'350px',
-        'image_previewText':' ',
-        'tabSpaces': 4,
-        'toolbar': 'Custom',
-        # 添加按钮在这里
-        'toolbar_Custom': [
-            ['Font','FontSize'],
-            ['Styles','Format','Bold', 'Italic', 'Underline','Strike','RemoveFormat','TextColor','BGColor'],
-            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-            ['NumberedList', 'BulletedList'],
-            ['Blockquote', 'CodeSnippet'],
-            ['Smiley','SpecialChar','Image', 'Flash','Link', 'Unlink',],
-            ['Redo','Undo','Table','HorizontalRule'],
-            # ['Indent','Outdent'], 增加缩进量/减少缩进量
-            ['Maximize'],
-            ['Source'],
-            # ['Anchor'] 锚点
-        ],
-        # 插件
-        # 'uploadimage'，这个插件的作用是允许用户直接在编辑器里粘贴（ctrl + v）图片
-        # 添加的插件如果在在工具条(toolbar)还有按钮则在toolbar对应的value里添加名字（首字母大写）[例如codesnippet]
-        'extraPlugins': ','.join(['codesnippet','uploadimage','prism','widget','lineutils',]),
-    }
-}
+# CKEDITOR_CONFIGS = {
+#     # settings name 用于实例化编辑器的时候引用,配置名是default时，django-ckeditor默认使用这个配置
+#     'default': {
+#         # 使用简体中文
+#         'language':'zh-cn',
+#         # 编辑器的宽高请根据页面自行设置
+#         'width':'1300px',
+#         'height':'350px',
+#         'image_previewText':' ',
+#         'tabSpaces': 4,
+#         'toolbar': 'Custom',
+#         # 添加按钮在这里
+#         'toolbar_Custom': [
+#             ['Font','FontSize'],
+#             ['Styles','Format','Bold', 'Italic', 'Underline','Strike','RemoveFormat','TextColor','BGColor'],
+#             ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+#             ['NumberedList', 'BulletedList'],
+#             ['Blockquote', 'CodeSnippet'],
+#             ['Smiley','SpecialChar','Image', 'Flash','Link', 'Unlink',],
+#             ['Redo','Undo','Table','HorizontalRule'],
+#             # ['Indent','Outdent'], 增加缩进量/减少缩进量
+#             ['Maximize'],
+#             ['Source'],
+#             # ['Anchor'] 锚点
+#         ],
+#         # 插件
+#         # 'uploadimage'，这个插件的作用是允许用户直接在编辑器里粘贴（ctrl + v）图片
+#         # 添加的插件如果在在工具条(toolbar)还有按钮则在toolbar对应的value里添加名字（首字母大写）[例如codesnippet]
+#         'extraPlugins': ','.join(['codesnippet','uploadimage','prism','widget','lineutils',]),
+#     }
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
