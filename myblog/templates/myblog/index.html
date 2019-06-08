@@ -197,7 +197,7 @@
 	  <a class="focus" href="{{ article.get_absolute_url }}" title="{{article.article_name}}" target="_blank" >
 		  <!--img:alt-规定图像的替代文本,{{ MEDIA_URL }}会被渲染为 settings.py 中的 MEDIA_URL 值(需要在settings.py中的TEMPLATES中设置media的处理)-->
 		  <!--这个 MEDIA_URL(/media/)由于在urls中用static()将MEDIA_URL映射到STATIC_ROOT，因此可以找到media目录的位置，ImageField是图片的存储位置(/upload/image.jpg)-->
-		  <img width="220px" height="150px" class="thumb" data-original="{{ MEDIA_URL }}{{article.face}}" src="{{ MEDIA_URL }}{{article.face}}" alt="暂无封面图片" style="display: inline;"></a>
+		  <img width="auto" height="150px" class="thumb" data-original="{{ MEDIA_URL }}{{article.face}}" src="{{ MEDIA_URL }}{{article.face}}" alt="暂无封面图片" style="display: inline;"></a>
 		<header>
 			<a class="cat" href="{% url 'myblog:nav_category' article.category %}" title="{{article.category}}" >{{ article.category }}<i></i></a>
 			<h2>

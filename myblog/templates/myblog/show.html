@@ -135,7 +135,7 @@
     <!--Django 出于安全方面的考虑，任何的 HTML 代码在 Django 的模板中都会被转义（即显示原始的 HTML 代码，而不是经浏览器渲染后的格式）。为了解除转义，只需在模板标签使用 safe 过滤器即可，告诉 Django，这段文本是安全的-->
 	<p>{{ article.content|safe }}</p>
 
-	<br><br>
+	<br><br><br><br>
 	  <div class="likes"><a class="article_like" href="#" data-id="{{ article.id }}" data-action="article_like">
 		  <i class="fa fa-heart-o">&thinsp;喜欢这篇文章(<span class="total">{{article.like_num}}</span>)</i></a></div>
 	<div class="bdsharebuttonbox">
